@@ -1,0 +1,32 @@
+{% extends "events/layout.html" %}
+{% block title %}Past Events{% endblock %}
+{% block content %}
+
+<!-- events -->
+<section class="px-lg-5 py-5 text-center">
+  <div class="container mb-5">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="col">
+        <h1 class="fs-3 fw-bold">Past Events</h1>
+      </div>
+    </div>
+  </div>
+  {% for event in events %}
+<div class="container my-4  p-3 border border-dark border-2" style="background-color: #fcbf49;">
+  <div class="row align-items-center">
+    <div class="col-md-8 text-md-start">
+      <h2 class="fs-4 mb-2">{{ event.title }}</h2>
+      <p class="mb-1"><strong>Date:</strong> {{ event.date }}</p>
+      <p><strong>Location:</strong> {{ event.location }}</p>
+    </div>
+    <div class="col-md-4 text-md-end mt-2 mt-md-0">
+      <a href="{% url 'view_events' event.id %}" class="btn btn-outline-primary py-2 px-4">View</a>
+    </div>
+  </div>
+</div>
+{% empty %}
+<p>No Past Events Available</p>
+{% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card shadow" style="background-color: #e63946; color: white; border-radius: 12px;">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Sign Up</h2>
+
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        
+                        <div class="form-group mb-3">
+                            <label for="{{ form.username.id_for_label }}" class="fw-bold">Username:</label>
+                            <input type="text" name="{{ form.username.name }}" class="form-control border-0 p-2"
+                                style="border-radius: 8px;" value="{{ form.username.value }}" />
+                            {% if form.username.errors %}
+                            <small class="text-warning">{{ form.username.errors }}</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="{{ form.password1.id_for_label }}" class="fw-bold">Password:</label>
+                            <input type="password" name="{{ form.password1.name }}" class="form-control border-0 p-2"
+                                style="border-radius: 8px;" value="{{ form.password1.value }}" />
+                            <small class="text-warning">{{ form.password1.errors }}</small>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="{{ form.password2.id_for_label }}" class="fw-bold">Re-Type Password:</label>
+                            <input type="password" name="{{ form.password2.name }}" class="form-control border-0 p-2"
+                                style="border-radius: 8px;" value="{{ form.password2.value }}" />
+                            <small class="text-warning">{{ form.password2.errors }}</small>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn fw-bold" 
+                                style="background: white; color: #e63946; padding: 10px 20px; border-radius: 8px; border: 2px solid white;">
+                                Sign Up
+                            </button>
+                            <a href="{% url 'login' %}" class="btn fw-bold" 
+                                style="background: white; color: #e63946; padding: 10px 20px; border-radius: 8px; border: 2px solid white;">
+                                Login
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

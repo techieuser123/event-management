@@ -1,0 +1,66 @@
+{% extends "events/layout.html" %}
+{% block title %}Add Event{% endblock %}
+{% block content %}
+
+<div class="container py-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-4" style="background-color: #fcbf49; color: black; border-radius: 12px; max-width: 600px; width: 100%;" >
+        <div class="card-body">
+            <h2 class="text-center fw-bold mb-4">Add Event</h2>
+
+            <form action="{% url 'add_events' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="eventName" class="form-label fw-bold">Event Name</label>
+                    <input type="text" class="form-control border-0 p-2" id="eventName"
+                        placeholder="Enter event name" name="title" required 
+                        style="border-radius: 8px;" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="eventDesc" class="form-label fw-bold">Description</label>
+                    <textarea class="form-control border-0 p-2" id="eventDesc" rows="3"
+                        placeholder="Enter event description" name="description" required 
+                        style="border-radius: 8px;"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="maxParticipants" class="form-label fw-bold">Max Participants</label>
+                    <input type="number" class="form-control border-0 p-2" id="maxParticipants" 
+                        name="max_participants" min="1" placeholder="Enter max participants" required 
+                        style="border-radius: 8px;" />
+                </div>
+
+                <div class="d-flex gap-3">
+                    <div class="mb-3 w-50">
+                        <label for="eventDate" class="form-label fw-bold">Date</label>
+                        <input type="date" class="form-control border-0 p-2" id="eventDate" 
+                            name="date" value="{{ date|date:'Y-m-d' }}" required 
+                            style="border-radius: 8px;" />
+                    </div>
+
+                    <div class="mb-3 w-50">
+                        <label for="eventTime" class="form-label fw-bold">Time</label>
+                        <input type="time" class="form-control border-0 p-2" id="eventTime" 
+                            name="time" value="{{ date|time:'H:i' }}" required 
+                            style="border-radius: 8px;" />
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="eventLocation" class="form-label fw-bold">Location</label>
+                    <textarea class="form-control border-0 p-2" id="eventLocation" rows="1"
+                        placeholder="Enter event location" required name="location" 
+                        style="border-radius: 8px;"></textarea>
+                </div>
+
+                <button class="btn fw-bold w-100 p-2" 
+                    style="background: white; color: #fcbf49; border-radius: 8px; border: 2px solid white;">
+                    Create Event
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
