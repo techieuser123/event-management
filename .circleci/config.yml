@@ -31,7 +31,7 @@ jobs:
           name: Initialize Elastic Beanstalk Application
           command: |
             eb init dj-test-app \
-              --region ap-south-1 \
+              --region us-east-1 \
               --platform "Python 3.11"
 
       - run:
