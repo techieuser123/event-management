@@ -26,9 +26,17 @@ jobs:
       - run:
           name: Install EB CLI
           command: pip install awsebcli --upgrade
+
+      - run:
+          name: Initialize Elastic Beanstalk Application
+          command: |
+            eb init dj-test-app \
+              --region ap-south-1 \
+              --platform "Python 3.11"
+
       - run:
           name: Deploy to Elastic Beanstalk
-          command: eb deploy django-env
+          command: eb deploy Dj-test-app-env
 
 
 workflows:
