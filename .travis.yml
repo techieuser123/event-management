@@ -1,0 +1,4 @@
+language: python
+dist: focal
+
+script: echo "Hello Travis !"
